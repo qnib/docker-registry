@@ -1,9 +1,16 @@
 {
-  "check": {
-    "id": "docker-registry",
-    "name": "docker-registry",
-    "port": 80,
-    "script": "echo 'Checking HTTP endpoint of registry (curl -sI localhost|grep 200)'; curl -sI localhost|grep 200",
-    "interval": "10s"
-  }
+  "services": [
+    {
+      "id": "docker-registry",
+      "name": "docker-registry",
+      "tags": [],
+      "port": 80,
+      "checks": [
+        {
+          "script": "echo 'Checking HTTP endpoint of registry (curl -sI localhost|grep 200)'; curl -sI localhost|grep 200 || exit 2",
+          "interval": "5s"
+        }
+      ]
+    }
+  ]
 }
